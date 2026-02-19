@@ -23,7 +23,7 @@ jobs:
         shell: bash
         run: uv python install 3.13
 
-      - run: uv run pip install -e '.[dev]'
+      - run: uv sync --frozen
       - run: uv run pytest
 
   publish:
