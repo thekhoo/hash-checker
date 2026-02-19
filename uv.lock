@@ -36,8 +36,8 @@ wheels = [
 ]
 
 [[package]]
-name = "hash-checker"
-version = "0.1.0"
+name = "hashcheck"
+version = "0.1.2"
 source = { editable = "." }
 dependencies = [
     { name = "cloup" },
