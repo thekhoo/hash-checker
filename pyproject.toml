@@ -9,4 +9,4 @@ dependencies = [
 ]
 
 [project.scripts]
-checksum = "hash_checker:main"
+hashcheck = "hash_checker:main"
