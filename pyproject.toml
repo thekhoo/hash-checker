@@ -15,3 +15,7 @@ hashcheck = "hash_checker.main:main"
 dev = [
     "pytest>=9.0.2",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
