@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup: install dev dependencies and git hooks",
+      "type": "shell",
+      "command": "uv sync && uv run pre-commit install && uv run pre-commit install --hook-type commit-msg",
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "close": true
+      }
+    }
+  ]
+}

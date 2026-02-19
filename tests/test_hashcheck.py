@@ -13,6 +13,7 @@ def runner():
 
 # --- md5_hash ---
 
+
 def test_md5_hash_returns_correct_digest(tmp_path):
     f = tmp_path / "file.txt"
     f.write_bytes(b"hello world")
@@ -33,6 +34,7 @@ def test_md5_hash_raises_on_missing_file(tmp_path):
 
 
 # --- hashcheck <filepath> ---
+
 
 def test_main_prints_hash(runner, tmp_path):
     f = tmp_path / "file.txt"
@@ -57,6 +59,7 @@ def test_main_file_not_found(runner, tmp_path):
 
 
 # --- hashcheck <file1> <file2> ... ---
+
 
 def test_compare_matching_files(runner, tmp_path):
     f1 = tmp_path / "a.txt"
