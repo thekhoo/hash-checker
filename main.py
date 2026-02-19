@@ -1,6 +1,4 @@
-def main():
-    print("Hello from hash-checker!")
-
+from hash_checker import main
 
 if __name__ == "__main__":
     main()
