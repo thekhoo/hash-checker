@@ -41,32 +41,49 @@ aabbcc112233445566778899aabbcc11  modified.zip
 Files do not match.
 ```
 
+## Contributing
+
+### Setup
+
+```bash
+uv sync
+uv run pre-commit install
+uv run pre-commit install --hook-type commit-msg
+```
+
+These commands install two git hooks:
+- **pre-commit** — runs [pyrefly](https://pyrefly.org/) type checking before each commit
+- **commit-msg** — enforces [Conventional Commits](https://www.conventionalcommits.org/) format; commits that don't conform are rejected
+
+If you're using VS Code, both hooks and `uv sync` are installed automatically when you open the workspace.
+
+### Commit message format
+
+```
+<type>: <description>
+
+# Examples
+feat: add SHA-256 support
+fix: handle symlinks correctly
+docs: update usage examples
+```
+
+| Type | Release triggered |
+|------|-------------------|
+| `feat:` | minor (`0.1.x` → `0.2.0`) |
+| `fix:`, `perf:`, `refactor:` | patch (`0.1.3` → `0.1.4`) |
+| `feat!:` or `BREAKING CHANGE:` footer | major (`0.x.x` → `1.0.0`) |
+| `chore:`, `docs:`, `test:` | none |
+
 ## Releasing
 
-Releases are published to PyPI automatically by the CI workflow when a version tag is pushed.
+Releases are fully automated. On every merge to `main`:
 
-**1. Bump the version in `pyproject.toml`**
+1. The release workflow reads commits since the last tag and determines the next version.
+2. `pyproject.toml` is updated and a `vX.Y.Z` tag is pushed.
+3. The publish workflow triggers on the tag, builds the package, and uploads it to PyPI.
 
-```toml
-[project]
-version = "0.2.0"
-```
-
-**2. Commit the version bump**
-
-```bash
-git add pyproject.toml
-git commit -m "chore: bump version to 0.2.0"
-```
-
-**3. Tag and push**
-
-```bash
-git tag v0.2.0
-git push origin main --tags
-```
-
-The `publish` job in CI will build the package and upload it to PyPI once all tests pass.
+No manual version bumping or tagging is needed.
 
 > **First-time setup:** PyPI Trusted Publishing must be configured before the first release.
 > Go to your PyPI project → *Manage* → *Publishing* and add a trusted publisher:

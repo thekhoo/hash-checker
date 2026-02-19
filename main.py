@@ -1,4 +1,4 @@
-from hash_checker import main
+from hashcheck.main import main
 
 if __name__ == "__main__":
     main()
