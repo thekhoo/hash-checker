@@ -3,7 +3,7 @@ import hashlib
 import pytest
 from click.testing import CliRunner
 
-from hash_checker.main import main, md5_hash
+from hashcheck.main import main, md5_hash
 
 
 @pytest.fixture
